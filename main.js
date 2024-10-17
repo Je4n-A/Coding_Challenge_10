@@ -37,9 +37,23 @@ sizeDropdown.addEventListener('change', function() {
 });
 
 // Update dropdown options to include availability statuses
+
 for (const size in availability) {
     const option = document.createElement('option');
     option.value = size;
     option.textContent = `${size.charAt(0).toUpperCase() + size.slice(1)}: ${availability[size]}`;
     sizeDropdown.appendChild(option);
-}
+};
+
+// Create Checkout Event
+
+purchaseButton.addEventListener('click', function() {
+    const selectedSize = sizeDropdown.value;
+    const stockStatus = availability[selectedSize];
+
+    if (stockStatus === 'Out of Stock') {
+        alert('Sorry, this product is out of stock and cannot be purchased.');
+    } else {
+        alert('Thank you for your purchase!');
+    }
+});
