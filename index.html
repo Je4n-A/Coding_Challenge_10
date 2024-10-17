@@ -7,7 +7,7 @@
 </head>
 <body>
     <h2>Diamonds</h2>
-    <p id="priceDisplay"> Price: $XX.XX</p>
+    <p id="priceDisplay"> Price: 200</p>
     <label for="size">Choose a size:</label>
     <select id="size" name="size">
         <option value="small">Small</option>
@@ -24,6 +24,21 @@
         <input type="text" id="newAvailability" placeholder="New Availability">
         <button type="submit">Add Product</button>
     </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const priceDisplay = document.getElementById('priceDisplay');
+            const sizeSelect = document.getElementById('size');
+            const purchaseButton = document.getElementById('purchaseButton');
+            const addProductForm = document.getElementById('addProductForm');
+
+            if (priceDisplay && sizeSelect && purchaseButton && addProductForm) {
+                // Your code to manipulate these elements
+            } else {
+                console.error('One or more elements are not found in the DOM.');
+            }
+        });
+    </script>
 
     <!-- Include main.js -->
 <script src="main.js"></script>
