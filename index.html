@@ -6,8 +6,8 @@
     <title>Product Page</title>
 </head>
 <body>
-    <h2>Product Name</h2>
-    <p>Price: $XX.XX</p>
+    <h2>Diamonds</h2>
+    <p id="priceDisplay"> Price: $XX.XX</p>
     <label for="size">Choose a size:</label>
     <select id="size" name="size">
         <option value="small">Small</option>
@@ -15,6 +15,18 @@
         <option value="large">Large</option>
     </select>
     <br><br>
-    <button type="button">Purchase</button>
+    <button id="purchaseButton" type="button">Purchase</button>
+
+    <!-- Form to add new product -->
+    <form id="addProductForm">
+        <input type="text" id="newSize" placeholder="New Size">
+        <input type="number" id="newPrice" placeholder="New Price">
+        <input type="text" id="newAvailability" placeholder="New Availability">
+        <button type="submit">Add Product</button>
+    </form>
+
+    <!-- Include main.js -->
+<script src="main.js"></script>
+
 </body>
-</html>
+</html> 
