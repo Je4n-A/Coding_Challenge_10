@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Page</title>
+    <style>
+        #purchaseButton{
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
     <h2>T-Shirts</h2>
@@ -33,11 +38,41 @@
             const purchaseButton = document.getElementById('purchaseButton');
             const addProductForm = document.getElementById('addProductForm');
 
-            if (priceDisplay && sizeSelect && purchaseButton && addProductForm) {
-                // Your code to manipulate these elements
-            } else {
-                console.error('One or more elements are not found in the DOM.');
+            const products = {
+                small: { price: 10.00, availability: 'In Stock' },
+                medium: { price: 12.00, availability: 'Out of Stock' },
+                large: { price: 15.00, availability: 'In Stock' }
+            };
+
+            function updateProductInfo(size) {
+                const product = products[size];
+                if (product) {
+                    priceDisplay.textContent = `Price: $${product.price.toFixed(2)}`;
+                    availabilityDisplay.textContent = `Availability: ${product.availability}`;
+                    purchaseButton.disabled = product.availability === 'Out of Stock';
+                }
             }
+
+            sizeSelect.addEventListener('change', function() {
+                updateProductInfo(sizeSelect.value);
+            });
+
+            // Initialize with the default selected size
+            updateProductInfo(sizeSelect.value);
+
+            addProductForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const newSize = document.getElementById('newSize').value;
+                const newPrice = parseFloat(document.getElementById('newPrice').value);
+                const newAvailability = document.getElementById('newAvailability').value;
+
+                if (newSize && !isNaN(newPrice) && newAvailability) {
+                    products[newSize] = { price: newPrice, availability: newAvailability };
+                    alert('New product added successfully!');
+                } else {
+                    alert('Please fill out all fields correctly.');
+                }
+            });
         });
     </script>
 

@@ -40,4 +40,11 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('Please fill out all fields correctly.');
         }
     });
+    
+     // Event delegation for dynamically added elements
+     document.body.addEventListener('change', function(event) {
+        if (event.target && event.target.id === 'size') {
+            updateProductInfo(event.target.value);
+        }
+    });
 });
