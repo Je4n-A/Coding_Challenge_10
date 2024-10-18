@@ -5,15 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Page</title>
     <style>
+        /* Add margin below the purchase button */
         #purchaseButton{
             margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
+     <!-- Product Information Section -->
     <h2>T-Shirts</h2>
-    <p id="priceDisplay"> Price: XX.XX</p>
-    <p id="availabilityDisplay">Availability: Unknown</p>
+    <p id="priceDisplay"> Price: XX.XX</p> <!-- Placeholder for product price -->
+    <p id="availabilityDisplay">Availability: Unknown</p> <!-- Placeholder for product availability -->
+
+     <!-- Size Selection Dropdown -->
     <label for="size">Choose a size:</label>
     <select id="size" name="size">
         <option value="small">Small</option>
@@ -21,6 +25,7 @@
         <option value="large">Large</option>
     </select>
     <br><br>
+      <!-- Purchase Button -->
     <button id="purchaseButton" type="button">Purchase</button>
 
     <!-- Form to add new product -->
@@ -31,19 +36,23 @@
         <button type="submit">Add Product</button>
     </form>
 
+     <!-- JavaScript to Handle Dynamic Updates -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+             // Get references to DOM elements
             const priceDisplay = document.getElementById('priceDisplay');
             const sizeSelect = document.getElementById('size');
             const purchaseButton = document.getElementById('purchaseButton');
             const addProductForm = document.getElementById('addProductForm');
 
+            // Product information object
             const products = {
                 small: { price: 10.00, availability: 'In Stock' },
                 medium: { price: 12.00, availability: 'Out of Stock' },
                 large: { price: 15.00, availability: 'In Stock' }
             };
 
+             // Function to update product information based on selected size
             function updateProductInfo(size) {
                 const product = products[size];
                 if (product) {
@@ -53,6 +62,7 @@
                 }
             }
 
+             // Event listener for size selection change
             sizeSelect.addEventListener('change', function() {
                 updateProductInfo(sizeSelect.value);
             });
@@ -60,6 +70,7 @@
             // Initialize with the default selected size
             updateProductInfo(sizeSelect.value);
 
+            // Event listener for form submission to add new products
             addProductForm.addEventListener('submit', function(event) {
                 event.preventDefault();
                 const newSize = document.getElementById('newSize').value;
